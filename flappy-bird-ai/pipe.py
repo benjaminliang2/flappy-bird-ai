@@ -1,6 +1,4 @@
 import pygame
-import neat
-import time
 import os
 import random
 
@@ -39,10 +37,10 @@ class Pipe:
         top_offset = (self.x - bird.x, self.top - round(bird.y))
         bottom_offset = (self.x - bird.x, self.bottom - round(bird.y))
 
-        b_bird = bird_mask.overlap(bottom_mask, bottom_offset)
-        t_bird = bird_mask.overlap(top_mask, top_offset)
+        b_point = bird_mask.overlap(bottom_mask, bottom_offset)
+        t_point = bird_mask.overlap(top_mask, top_offset)
 
-        if t_point or b_piont: 
+        if t_point or b_point: 
             return True
         return False
 

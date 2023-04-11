@@ -1,3 +1,5 @@
+import pygame
+import os 
 
 BASE_IMG = pygame.transform.scale2x(pygame.image.load(os.path.join("flappy-bird-ai", "imgs", "base.png")))
 
@@ -6,8 +8,8 @@ class Base:
     WIDTH = BASE_IMG.get_width()
     IMG = BASE_IMG
 
-    def __init__(self, t):
-        self.y = y 
+    def __init__(self, y):
+        self.y = y
         self.x1 = 0
         self.x2 = self.WIDTH
     

@@ -1,8 +1,6 @@
 import pygame
-import neat
-import time
 import os
-import random
+
 
 BIRD_IMGS = [
              pygame.transform.scale2x(pygame.image.load(os.path.join("flappy-bird-ai", "imgs", "bird1.png"))),
