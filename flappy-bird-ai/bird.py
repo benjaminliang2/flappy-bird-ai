@@ -4,16 +4,11 @@ import time
 import os
 import random
 
-WIN_WIDTH = 500
-WIN_HEIGHT = 800
-
 BIRD_IMGS = [
-             pygame.transform.scale2x(pygame.image.load(os.path.join( "imgs", "bird1.png"))),
-             pygame.transform.scale2x(pygame.image.load(os.path.join( "imgs", "bird2.png"))),
-             pygame.transform.scale2x(pygame.image.load(os.path.join( "imgs", "bird3.png")))
+             pygame.transform.scale2x(pygame.image.load(os.path.join("flappy-bird-ai", "imgs", "bird1.png"))),
+             pygame.transform.scale2x(pygame.image.load(os.path.join("flappy-bird-ai", "imgs", "bird2.png"))),
+             pygame.transform.scale2x(pygame.image.load(os.path.join("flappy-bird-ai", "imgs", "bird3.png")))
             ]
-BASE_IMG = pygame.transform.scale2x(pygame.image.load(os.path.join( "imgs", "base.png")))
-BG_IMG = pygame.transform.scale2x(pygame.image.load(os.path.join( "imgs", "bg.png")))
 
 
 class Bird:
@@ -27,7 +22,7 @@ class Bird:
         self.y = y
         self.tilt = 0
         self.tick_count = 0 
-        self.velocity = 0
+        self.vel = 0
         self.height = self.y
         self.image_count = 0 
         self.img = self.IMGS[0]
@@ -82,23 +77,4 @@ class Bird:
     def get_mask(self): 
         return pygame.mask.from_surface(self.img)
 
-def draw_window(win, bird):
-    win.blit(BG_IMG, (0,0))
-    bird.draw(win)
-    pygame.display.update()
-def main():
-    bird = Bird(200,200)
-    win = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-    clock = pygame.time.Clock()
-    run = True
-    while run:
-        clock.tick(30)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
-        bird.move()
-        draw_window(win, bird)
-    pygame.quit()
-    quit()
 
-main()

@@ -4,7 +4,7 @@ import time
 import os
 import random
 
-PIPE_IMG = pygame.transform.scale2x(pygame.image.load(os.path.join( "imgs", "pipe.png")))
+PIPE_IMG = pygame.transform.scale2x(pygame.image.load(os.path.join("flappy-bird-ai", "imgs", "pipe.png")))
 class Pipe:
     GAP = 200
     VEL = 5 
@@ -30,4 +30,24 @@ class Pipe:
     def draw(self, win):
         win.blit(self.PIPE_TOP, (self.x, self.top))
         win.blit(self.PIPE_BOTTOM, (self.x, self.bottom))
+
+    def collide(self, bird):
+        bird_mask = bird.get_mask()
+        top_mask = pygame.mask.from_surface(self.PIPE_TOP)
+        bottom_mask = pygame.mask.from_surface(self.PIPE_BOTTOM)
+
+        top_offset = (self.x - bird.x, self.top - round(bird.y))
+        bottom_offset = (self.x - bird.x, self.bottom - round(bird.y))
+
+        b_bird = bird_mask.overlap(bottom_mask, bottom_offset)
+        t_bird = bird_mask.overlap(top_mask, top_offset)
+
+        if t_point or b_piont: 
+            return True
+        return False
+
+
+
+
+
 
